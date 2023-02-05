@@ -65,16 +65,14 @@ const pAequorFactory = (num, dnaBases) => {
 const likelyToSurvive = () => {
   const collection = [];
   let specimenNum = 0;
-  let count = collection.length;
-  while (count < 30) {
+  while (collection.length < 30) {
     let randArr = mockUpStrand();
     if (pAequorFactory(specimenNum, randArr).willLikelySurvive()) {
-      if (count < 30) {
-        collection.push(randArr);
-        count++;
-        specimenNum++;
-      }
+      collection.push(randArr);
+      specimenNum++;
     }
   }
   return collection;
 };
+
+console.log(likelyToSurvive().length);
