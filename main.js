@@ -14,7 +14,7 @@ const mockUpStrand = () => {
 };
 
 //Returns an object with specimen number and dna
-const pAequorFactory = (num = 0, dnaBases) => {
+const pAequorFactory = (num, dnaBases) => {
   const obj = {
     specimenNum: num,
     dna: dnaBases,
@@ -64,13 +64,15 @@ const pAequorFactory = (num = 0, dnaBases) => {
 //Returns an array 30 instances that can survive in their natural environment
 const likelyToSurvive = () => {
   const collection = [];
+  let specimenNum = 0;
   let count = collection.length;
   while (count < 30) {
     let randArr = mockUpStrand();
-    if (pAequorFactory(randArr).willLikelySurvive()) {
+    if (pAequorFactory(specimenNum, randArr).willLikelySurvive()) {
       if (count < 30) {
         collection.push(randArr);
         count++;
+        specimenNum++;
       }
     }
   }
